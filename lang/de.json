@@ -1,0 +1,49 @@
+{
+  "ui": {
+    "no_files_found":        "Keine Dateien gefunden in: {log_dir}",
+    "no_hits":               "Keine Einträge mit Response gefunden.",
+    "file_error":            "[FEHLER] {filename}: {error}",
+    "header_found":          "{total} Einträge → {groups} einzigartige Muster{flags}",
+    "header_merged":         "(Duplikate zusammengeführt, IPs gemergt)",
+    "footer":                "Gesamt: {total} Einträge  |  {groups} einzigartige Muster{suffix}",
+    "footer_analysed":       "  |  {groups} Muster analysiert",
+    "flag_interpret":        "KI-Analyse",
+    "flag_deep":             "Deep Context",
+    "pattern_header":        "Muster {i}/{total}  –  {count}x beobachtet",
+    "first_hit":             "Erster Treffer",
+    "last_hit":              "Letzter Treffer",
+    "source_ips":            "Quell-IPs",
+    "unique":                "eindeutig",
+    "source_files":          "Quelldateien",
+    "sensor":                "Sensor",
+    "event":                 "Event",
+    "data_type":             "Datentyp",
+    "target":                "Ziel",
+    "requests":              "Requests",
+    "response":              "Response",
+    "ki_analysing":          "[KI] Analysiere Muster {i}/{total} ...",
+    "ki_header":             "KI-Analyse",
+    "deep_running":          "[KI] Deep Context Analyse läuft (kann 30-60s dauern) ...",
+    "deep_header":           "DEEP CONTEXT ANALYSE  (Modell: {model})",
+    "saved_to":              "[INFO] Ausgabe gespeichert in: {file}",
+    "deep_sections": {
+      "KAMPAGNEN":           "🎯",
+      "IP-PROFILE":          "🌐",
+      "ZEITLICHE MUSTER":    "🕐",
+      "KORRELATIONEN":       "🔗",
+      "GESAMTRISIKO":        "⚠️ ",
+      "EMPFEHLUNGEN":        "💡"
+    },
+    "ki_fields": {
+      "AKTION":    "🔵",
+      "ZIEL":      "🎯",
+      "ERGEBNIS":  "📋",
+      "IPs":       "🌐",
+      "RISIKO":    "⚠️ "
+    }
+  },
+  "prompts": {
+    "analyse_single": "Du bist ein ICS/SCADA Security Analyst. Analysiere diese Honeypot-Aktivität auf Deutsch.\n\nDie folgende Aktivität wurde {count}x beobachtet:\n\nErster Zeitstempel : {ts_first}\nLetzter Zeitstempel: {ts_last}\nAnzahl Ereignisse  : {count}\nQuell-IPs          : {ips_str}\nQuelldateien       : {quellen}\nEvent-Typ          : {event_type}\nDatentyp           : {data_type}\nRequests           : {requests}\nResponse           :\n{response}\n\nAntworte AUSSCHLIESSLICH in exakt diesem Schema (keine Abweichungen, keine zusätzlichen Felder):\n\nAKTION    : <1 Satz - welcher Befehl/welches Protokoll wurde verwendet>\nZIEL      : <1 Satz - was wollte der Angreifer erreichen>\nERGEBNIS  : <1 Satz - was verraet die Response ueber das System>\nIPs       : <\"Einzelner Scanner\" ODER \"Koordiniert\"> - <1-Satz Begruendung>\nRISIKO    : <NIEDRIG | MITTEL | HOCH> - <1 Satz Begruendung>",
+    "analyse_deep": "Du bist ein erfahrener ICS/SCADA Threat Intelligence Analyst.\nDir liegen alle Honeypot-Logs eines Conpot-Systems vor. Führe eine tiefgehende Korrelationsanalyse durch.\n\n════ STATISTIK ════════════════════════════════════════\nGesamt-Ereignisse  : {total_events}\nEinzigartige IPs   : {unique_ips}\nEinzigartige Muster: {unique_patterns}\n\n════ AKTIVITÄT PRO IP (chronologisch) ════════════════\n{ip_summary}\n\n════ GEMERGETE ANGRIFFSMUSTER ════════════════════════\n{pattern_summary}\n\n════ AUFGABE ══════════════════════════════════════════\nAnalysiere die Daten übergreifend und antworte AUSSCHLIESSLICH in diesem Schema:\n\nKAMPAGNEN:\n  - <Beschreibe jede erkannte Angriffskampagne oder Gruppe zusammengehöriger Aktivitäten. Je Kampagne 1-2 Sätze.>\n\nIP-PROFILE:\n  - <IP-Adresse>: <Einschätzung: Scanner / gezielter Angreifer / Bot / unbekannt> - <1 Satz Begruendung>\n\nZEITLICHE MUSTER:\n  - <Gibt es auffällige zeitliche Häufungen, Abstände oder Reihenfolgen? 2-3 Sätze.>\n\nKORRELATIONEN:\n  - <Welche IPs oder Muster hängen möglicherweise zusammen? 2-3 Sätze.>\n\nGESAMTRISIKO  : <NIEDRIG | MITTEL | HOCH | KRITISCH> - <1-2 Sätze Gesamteinschätzung>\n\nEMPFEHLUNGEN:\n  - <Konkrete Handlungsempfehlungen, eine pro Zeile>"
+  }
+}

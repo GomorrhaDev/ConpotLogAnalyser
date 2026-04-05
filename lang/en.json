@@ -1,0 +1,49 @@
+{
+  "ui": {
+    "no_files_found":        "No files found in: {log_dir}",
+    "no_hits":               "No entries with a response found.",
+    "file_error":            "[ERROR] {filename}: {error}",
+    "header_found":          "{total} entries → {groups} unique patterns{flags}",
+    "header_merged":         "(Duplicates merged, IPs consolidated)",
+    "footer":                "Total: {total} entries  |  {groups} unique patterns{suffix}",
+    "footer_analysed":       "  |  {groups} patterns analysed",
+    "flag_interpret":        "AI Analysis",
+    "flag_deep":             "Deep Context",
+    "pattern_header":        "Pattern {i}/{total}  –  observed {count}x",
+    "first_hit":             "First seen",
+    "last_hit":              "Last seen",
+    "source_ips":            "Source IPs",
+    "unique":                "unique",
+    "source_files":          "Source files",
+    "sensor":                "Sensor",
+    "event":                 "Event",
+    "data_type":             "Data type",
+    "target":                "Target",
+    "requests":              "Requests",
+    "response":              "Response",
+    "ki_analysing":          "[AI] Analysing pattern {i}/{total} ...",
+    "ki_header":             "AI Analysis",
+    "deep_running":          "[AI] Deep Context analysis running (may take 30-60s) ...",
+    "deep_header":           "DEEP CONTEXT ANALYSIS  (Model: {model})",
+    "saved_to":              "[INFO] Output saved to: {file}",
+    "deep_sections": {
+      "CAMPAIGNS":           "🎯",
+      "IP PROFILES":         "🌐",
+      "TIME PATTERNS":       "🕐",
+      "CORRELATIONS":        "🔗",
+      "OVERALL RISK":        "⚠️ ",
+      "RECOMMENDATIONS":     "💡"
+    },
+    "ki_fields": {
+      "ACTION":    "🔵",
+      "GOAL":      "🎯",
+      "FINDING":   "📋",
+      "IPs":       "🌐",
+      "RISK":      "⚠️ "
+    }
+  },
+  "prompts": {
+    "analyse_single": "You are an ICS/SCADA Security Analyst. Analyse this honeypot activity in English.\n\nThe following activity was observed {count} time(s):\n\nFirst timestamp : {ts_first}\nLast timestamp  : {ts_last}\nEvent count     : {count}\nSource IPs      : {ips_str}\nSource files    : {quellen}\nEvent type      : {event_type}\nData type       : {data_type}\nRequests        : {requests}\nResponse        :\n{response}\n\nReply EXCLUSIVELY in exactly this schema (no deviations, no extra fields):\n\nACTION   : <1 sentence - which command/protocol was used>\nGOAL     : <1 sentence - what the attacker was trying to achieve>\nFINDING  : <1 sentence - what the response reveals about the system>\nIPs      : <\"Single scanner\" OR \"Coordinated\"> - <1-sentence justification>\nRISK     : <LOW | MEDIUM | HIGH> - <1-sentence justification>",
+    "analyse_deep": "You are an experienced ICS/SCADA Threat Intelligence Analyst.\nYou have all honeypot logs from a Conpot system. Perform a deep correlation analysis.\n\n════ STATISTICS ═══════════════════════════════════════\nTotal events     : {total_events}\nUnique IPs       : {unique_ips}\nUnique patterns  : {unique_patterns}\n\n════ ACTIVITY PER IP (chronological) ═════════════════\n{ip_summary}\n\n════ MERGED ATTACK PATTERNS ══════════════════════════\n{pattern_summary}\n\n════ TASK ═════════════════════════════════════════════\nAnalyse the data holistically and reply EXCLUSIVELY in this schema:\n\nCAMPAIGNS:\n  - <Describe each detected attack campaign or group of related activity. 1-2 sentences per campaign.>\n\nIP PROFILES:\n  - <IP address>: <Assessment: Scanner / Targeted attacker / Bot / Unknown> - <1-sentence justification>\n\nTIME PATTERNS:\n  - <Are there notable temporal clusters, intervals, or sequences? 2-3 sentences.>\n\nCORRELATIONS:\n  - <Which IPs or patterns may be connected? 2-3 sentences.>\n\nOVERALL RISK  : <LOW | MEDIUM | HIGH | CRITICAL> - <1-2 sentence overall assessment>\n\nRECOMMENDATIONS:\n  - <Concrete action items, one per line>"
+  }
+}
