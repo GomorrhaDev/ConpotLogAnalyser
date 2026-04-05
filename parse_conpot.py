@@ -40,10 +40,10 @@ def load_env(env_path: str = ".env") -> None:
 load_env()
 
 OPENROUTER_API_KEY    = os.environ.get("OPENROUTER_API_KEY", "")
-OPENROUTER_MODEL      = os.environ.get("OPENROUTER_MODEL", "openai/gpt-4o-mini")
-OPENROUTER_MODEL_DEEP = os.environ.get("OPENROUTER_MODEL_DEEP", "openai/gpt-4o")
-LOG_DIR               = os.environ.get("LOG_DIR", r"C:\Programmieren\logs_honeypot\conpot\log")
-LANG                  = os.environ.get("LANG", "de")
+OPENROUTER_MODEL      = os.environ.get("OPENROUTER_MODEL", "inception/mercury-2")
+OPENROUTER_MODEL_DEEP = os.environ.get("OPENROUTER_MODEL_DEEP", "minimax/minimax-m2.7")
+LOG_DIR               = os.environ.get("LOG_DIR", r"")
+LANG                  = os.environ.get("LANG", "en")
 
 
 # ── Load language file ─────────────────────────────────────────────────────────
@@ -150,7 +150,7 @@ def ki_request(prompt: str, model: str, timeout: int = 60) -> str:
         headers={
             "Authorization": f"Bearer {OPENROUTER_API_KEY}",
             "Content-Type":  "application/json",
-            "HTTP-Referer":  "https://github.com/conpot-parser",
+            "HTTP-Referer":  "https://github.com/GomorrhaDev/ConpotLogAnalyser",
             "X-Title":       "Conpot Log Analyser",
         },
         method="POST"
