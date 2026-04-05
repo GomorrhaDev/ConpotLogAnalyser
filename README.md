@@ -1,4 +1,4 @@
-# Conpot Log Parser
+# Conpot Log Analyser
 
 A command-line tool for parsing, merging, and AI-analysing [Conpot](https://github.com/mushorg/conpot) honeypot logs. Entries are automatically deduplicated by response, source IPs are consolidated, and optional LLM-powered analysis via [OpenRouter](https://openrouter.ai) can identify individual attack patterns or full campaign correlations. \
 Yes this was vibe-coded and yes it wasnt orrigenally intended to be used by someone other than myself. I use it for my [tpotce](https://github.com/telekom-security/tpotce) logs.
@@ -22,8 +22,8 @@ Yes this was vibe-coded and yes it wasnt orrigenally intended to be used by some
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/conpot-parser.git
-cd conpot-parser
+git clone https://github.com/GomorrhaDev/ConpotLogAnalyser.git
+cd ConpotLogAnalyser
 ```
 
 ### 2. Configure environment
